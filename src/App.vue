@@ -1,5 +1,5 @@
 <template>
-  <div class="view login">
+  <div class="view login" v-if="state.username ===''||state.username===null">
     <form class="login-form" @submit.prevent="Login"><!-- .prevent代表提交事件不再重载页面 -->
       <div class="form-inner">
         <h1>Login to Firechat</h1>
@@ -9,8 +9,20 @@
       </div>
     </form>
   </div>
-  <div class="view chat">
-    <h1>Chat View</h1>
+  <div class="view chat" v-else>
+   <header>
+    <button class="logout">Logout</button>
+    <h1>Welcome, {{ state.username }}</h1>
+   </header>
+   <section class="chat-box">
+
+   </section>
+   <footer>
+     <form @submit.prevent="">
+       <input type="text" placeholder="Write a Message...." />
+       <input type="submit" value="Send" />
+     </form>
+   </footer>
   </div>
 </template>
 
@@ -24,15 +36,19 @@ export default {
 
     const state = reactive({
       username: "",
-      message: []
+      messages: []
     });
     const Login = () => {
-      if(inputUsername.value != ""||inputUsername != null){
+      if(inputUsername.value != ""||inputUsername.value != null){
         state.username = inputUsername.value;
         inputUsername.value="";
       }
       }
-    return {};
+    return {
+      inputUsername,
+      Login,
+      state
+    };
   },
 };
 </script>
