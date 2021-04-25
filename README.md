@@ -1,3 +1,5 @@
+![聊天室](https://user-images.githubusercontent.com/49478754/116003547-fc82be80-a630-11eb-8ac0-d5359ea9d31d.jpg)
+
 # firebase-chat
 <<<<<<< HEAD
 
